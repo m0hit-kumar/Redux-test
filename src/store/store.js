@@ -1,13 +1,11 @@
-import { configureStore } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import cartReducer from "./cartSlice";
+import productReducer from "./productSlice";
+const store = configureStore({
+  reducer: {
+    cart: cartReducer,
+    product: productReducer,
+  },
+});
 
-const reducer = (state = 0, action) => {
-  switch (action.type) {
-    case "INCEREMENT":
-      return state + 1;
-    case "DECREMENT":
-      return state - 1;
-    default:
-      return state;
-  }
-};
-export const store = configureStore(reducer);
+export default store;
